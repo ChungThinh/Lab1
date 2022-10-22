@@ -54,9 +54,6 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int second;
-int minute;
-int hour;
 void clearAllClock()
 {
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7
@@ -105,7 +102,7 @@ void setNumberOnClock(int num)
 		break;
 	}
 }
-void cleadNumberOnClock(int num)
+void clearNumberOnClock(int num)
 {
 	switch(num)
 		{
@@ -183,9 +180,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  second = 12;
-  minute = 58;
-  hour = 30;
+  int second = 30;
+  int minute = 59;
+  int hour = 12;
   clearAllClock();
   //Nhap hour
   setNumberOnClock(hour);
@@ -204,31 +201,31 @@ int main(void)
 	                            |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, SET);
 
 	  if(second==0 || minute==0 || hour==0)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
+		  setNumberOnClock(0);
 	  if(second==1 || minute==1 || hour==1)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, RESET);
+		  setNumberOnClock(1);
 	  if(second==2 || minute==2 || hour==2)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
+		  setNumberOnClock(2);
 	  if(second==3 || minute==3 || hour==3)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
+		  setNumberOnClock(3);
 	  if(second==4 || minute==4 || hour==4)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
+		  setNumberOnClock(4);
 	  if(second==5 || minute==5 || hour==5)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
+		  setNumberOnClock(5);
 	  if(second==6 || minute==6 || hour==6)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, RESET);
+		  setNumberOnClock(6);
 	  if(second==7 || minute==7 || hour==7)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, RESET);
+		  setNumberOnClock(7);
 	  if(second==8 || minute==8 || hour==8)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, RESET);
+		  setNumberOnClock(8);
 	  if(second==9 || minute==9 || hour==9)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
+		  setNumberOnClock(9);
 	  if(second==10 || minute==10 || hour==10)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_13, RESET);
+		  setNumberOnClock(10);
 	  if(second==11 || minute==11 || hour==11)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_14, RESET);
+		  setNumberOnClock(11);
 	  if(second==12 || minute==12 || hour==12)
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
+		  setNumberOnClock(0);
 
 	  second = tempsec;
 	  minute = tempmin;
