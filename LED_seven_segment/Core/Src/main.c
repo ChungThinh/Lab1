@@ -56,32 +56,32 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN 0 */
 void display7SEG(int num)
 {
-	HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin|c_Pin|b_Pin|a_Pin ,RESET );
+	HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin|c_Pin|b_Pin|a_Pin ,RESET);
 	switch (num)
 	{
 	case 0:
-		HAL_GPIO_WritePin ( GPIOB , g_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , g_Pin ,SET);
 		break;
 	case 1:
-		HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin|a_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin|a_Pin ,SET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin ( GPIOB , f_Pin|c_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , f_Pin|c_Pin ,SET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin ( GPIOB , f_Pin|e_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , f_Pin|e_Pin ,SET);
 		break;
 	case 4:
-		HAL_GPIO_WritePin ( GPIOB , e_Pin|d_Pin|a_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , e_Pin|d_Pin|a_Pin ,SET);
 		break;
 	case 5:
-		HAL_GPIO_WritePin ( GPIOB , e_Pin|b_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , e_Pin|b_Pin ,SET);
 		break;
 	case 6:
-		HAL_GPIO_WritePin ( GPIOB , b_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , b_Pin ,SET);
 		break;
 	case 7:
-		HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin ,SET );
+		HAL_GPIO_WritePin ( GPIOB , g_Pin|f_Pin|e_Pin|d_Pin ,SET);
 		break;
 	case 8:
 		break;
@@ -163,10 +163,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int counter = 0;
-  int countled1 = 0;
-  int countled2 = 0;
+  int countled1, countled2;
+  int red, yellow, green;
   while (1)
   {
+	  ///Ex4
+//	  if(counter >= 10) counter = 0;
+//	  display7SEG(counter++);
+//	  HAL_Delay(1000);
+	  ///
+	  ///Ex5
 	  switch (counter)
  	  {
 	  case 0:
@@ -179,17 +185,17 @@ int main(void)
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
 		  break;
-	  case 4:
+	  case 5:
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
 		  break;
-	  case 7:
+	  case 8:
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
 		  break;
-	  case 8:
+	  case 10:
 		  counter=0;
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
@@ -197,31 +203,41 @@ int main(void)
 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
 		  break;
 	  }
+	  if(counter == 0)
+	  {
+		  red = 0;
+		  yellow = 0;
+		  green = 1;
+	  }
+	  if(green == 1)
+	  {
+		  countled1 = 3;
+		  countled2 = 5;
+		  green = 0;
+		  yellow = 1;
+	  }
+	  if(yellow == 1 && countled1 == 0)
+	  {
+		  countled1 = 2;
+		  yellow = 0;
+		  red = 1;
+	  }
+	  if(red == 1 && countled1 == 0)
+	  {
+		  countled1 = 5;
+		  countled2 = 3;
+		  yellow = 1;
+		  red = 0;
+	  }
+	  if(yellow == 1 && countled2 == 0)
+	  {
+		  countled2 = 2;
+		  yellow = 0;
+	  }
+	  countled1--;
+	  countled2--;
 	  display7SEG(countled1);
 	  display7SEGOPERSITE(countled2);
-	  countled1++;
-	  countled2++;
-	  switch(counter)
-	  {
-	  case 2:
-		  countled1 = 0;
-		  break;
-	  case 3:
-		  countled1 = 0;
-		  countled2 = 0;
-		  break;
-	  case 6:
-		  countled2 = 0;
-		  break;
-	  case 7:
-		  countled2 = 0;
-		  countled1 = 0;
-		  break;
-	  case 8:
-		  countled2 = 0;
-		  countled1 = 0;
-		  break;
-	  }
 	  counter++;
   	  HAL_Delay (1000);
     /* USER CODE END WHILE */
