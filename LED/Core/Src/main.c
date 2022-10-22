@@ -91,7 +91,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int a=0;
+  //int count = 0;
   while (1)
   {
 	  /////Ex1
@@ -102,11 +102,11 @@ int main(void)
 //	  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin,SET);
 //	  HAL_Delay(2000);
 	  /////C2
-//	  HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin);
-//	  HAL_Delay(2000);
-//	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
+	  HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin);
+	  HAL_Delay(2000);
+	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 	  ///Ex2
-//	  switch (a)
+//	  switch (count)
 //	  {
 //	  case 0:
 //		  HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin);
@@ -121,46 +121,46 @@ int main(void)
 //		  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
 //		  break;
 //	  case 10:
-//		  a=0;
+//		  count = 0;
 //		  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
 //		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 //		  break;
 //	  }
 //	  HAL_Delay(1000);
-//	  a++;
+//	  count++;
 	  /////Ex3
-	  switch (a)
-	 	  {
-	 	  case 0:
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
-	 		  break;
-	 	  case 3:
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
-	 		  break;
-	 	  case 4:
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
-	 		  break;
-	 	  case 7:
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
-	 		  break;
-	 	  case 8:
-	 		  a=0;
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
-	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
-	 		  break;
-	 	  }
-	 	  HAL_Delay(1000);
-	 	  a++;
+//	  switch (count)
+//	 	  {
+//	 	  case 0:
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
+//	 		  break;
+//	 	  case 3:
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
+//	 		  break;
+//	 	  case 4:
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_6);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
+//	 		  break;
+//	 	  case 7:
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_12);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
+//	 		  break;
+//	 	  case 8:
+//	 		  count = 0;
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_7);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_11);
+//	 		  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10);
+//	 		  break;
+//	 	  }
+//	 	  HAL_Delay(1000);
+//	 	  count++;
 
     /* USER CODE END WHILE */
 
